@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SM64 Logo</title>
+    <style>
+        body {
+            background-color: black;
+            /* Fondo negro por defecto */
+        }
+
+        .green-bg {
+            background-color: rgb(0, 255, 0);
+            /* Fondo verde cuando se pulsa "g" */
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .sm64title {
+            animation: sm64title 2s ease-in-out;
+        }
+
+        @keyframes sm64title {
+            0% {
+                transform: scale(.2, .3)
+            }
+
+            8% {
+                transform: scale(1.4, 1.3)
+            }
+
+            10% {
+                transform: scale(.8, 1.1)
+            }
+
+            12% {
+                transform: scaleX(1.1)
+            }
+
+            14% {
+                transform: scale(1)
+            }
+
+            15% {
+                transform: scale(.8, 1.2)
+            }
+
+            16% {
+                transform: scale(1)
+            }
+
+            17% {
+                transform: scale(.9, 1.1)
+            }
+
+            18% {
+                transform: scale(1)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="scaler">
+            <img id="selectedImage" class="sm64title" src="" alt="Selected Image">
+        </div>
+    </div>
+
+    <script>
+        /*document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                var selectedImage = document.getElementById("selectedImage");
+                selectedImage.style.display = "none";
+                setTimeout(function () {
+                    selectedImage.style.display = "block";
+                }, 1000);
+            } else if (event.key === "g") {
+                var body = document.querySelector("body");
+                body.classList.toggle("green-bg");
+            }
+        });*/
+
+        var body = document.body;
+        var title = document.querySelector('.sm64title');
+        var scaler = document.querySelector('.scaler');
+        var scale = 1.0;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
+        });
+
+        document.addEventListener('keydown', function (event) {
+
+            switch (event.key) {
+                case 'b':
+                    body.className = '';
+                    body.classList.add('black-bg');
+                    break;
+                case 'g':
+                    body.className = '';
+                    body.classList.add('green-bg');
+                    break;
+                case 'Enter':
+                    /*title.style.animation = 'none';
+                    setTimeout(function () {
+                        title.style.animation = '';
+                    }, 10);*/
+                    selectedImage.style.display = "none";
+                    setTimeout(function () {
+                        selectedImage.style.display = "block";
+                    }, 500);
+                    break;
+                case '+':
+                case '.':
+                    //Scale up by 0.25
+                    scale += 0.25;
+                    scaler.style.transform = 'scale(' + scale + ')';
+                    console.log("Scale: " + scale);
+                    break;
+                case '-':
+                case ',':
+                    // Scale down by 0.25
+                    scale -= 0.25;
+                    scaler.style.transform = 'scale(' + scale + ')';
+                    console.log("Scale: " + scale);
+                    break;
+                case 'h':
+                case 'H':
+                    alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
+                    break;
+            }
+        });
+
+        document.addEventListener("click", function () {
+            var input = document.createElement("input");
+            input.type = "file";
+            input.accept = "image/*";
+            input.onchange = function (event) {
+                var selectedImage = document.getElementById("selectedImage");
+                selectedImage.src = URL.createObjectURL(event.target.files[0]);
+            };
+            input.click();
+        });
+    </script>
+</body>
+
+</html>

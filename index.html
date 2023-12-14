@@ -2,6 +2,14 @@
 <html>
 
 <head>
+    <!-- Discord embed -->
+    <meta content="Super Mario 64 Intro Generator" property="og:title" />
+    <meta content="This site will let you apply the SM64 Logo animation to any image!" property="og:description" />
+    <meta content="https://eros71-dev.github.io/sm64-intro.generator" property="og:url" />
+    <meta content="https://eros71-dev.github.io/orthomario-git.png" property="og:image" />
+    <meta content="#396ACD" data-react-helmet="true" name="theme-color" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Other stuff -->
     <title>SM64 Intro Generator</title>
     <style>
         body {
@@ -13,6 +21,10 @@
         .green-bg {
             background-color: rgb(0, 255, 0);
             /* Fondo verde cuando se pulsa "g" */
+        }
+
+        .pink-bg {
+            background-color: rgb(255, 0, 255);
         }
 
         .center {
@@ -97,7 +109,7 @@
         var scale = 1.0;
 
         document.addEventListener('DOMContentLoaded', function () {
-            alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
+            alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nP for a pink background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
         });
 
         document.addEventListener('keydown', function (event) {
@@ -110,6 +122,10 @@
                 case 'g':
                     body.className = '';
                     body.classList.add('green-bg');
+                    break;
+                case 'p':
+                    body.className = '';
+                    body.classList.add('pink-bg');
                     break;
                 case 'Enter':
                     /*title.style.animation = 'none';
@@ -137,7 +153,7 @@
                     break;
                 case 'h':
                 case 'H':
-                    alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
+                    alert('Welcome! Here\'s some of the keys you can use in this site:\nB for a black background.\nG for a green background.\nP for a pink background.\nEnter to restart the animation.\nAnd click anywhere to choose an image!\n\nYou can scale the image with + or -, or with \",\" and \".\"');
                     break;
             }
         });
